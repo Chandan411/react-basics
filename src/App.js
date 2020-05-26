@@ -1,24 +1,22 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Greet from './components/Greet'
+import WelcomeCC from './components/WelcomeCC'
+import Click from './components/ClickState'
+import Form from './components/form'
+import Table from './components/Table'
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Greet></Greet>
+     <hr color="Red"></hr>
+     <Form/>
+     {/* <WelcomeCC/>
+    <Click/> */}
     </div>
   );
 }
