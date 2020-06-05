@@ -9,12 +9,14 @@ import ReactDOM from 'react-dom';
         this.onChangeMobileNumber = this.onChangeMobileNumber.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
       
   
         this.state = {
             first_name: '',
             last_name: '',
             mobile_number:'',
+            showButton:false,
             items: []
         }
     }
@@ -63,23 +65,27 @@ import ReactDOM from 'react-dom';
     ReactDOM.findDOMNode(this.refs.myInput).focus();
   }
 
-  handleUpdate = (i) =>{
-    let items = [...this.state.items];
-
-    items.splice(i,1);
-    ReactDOM.findDOMNode(this.refs.myInput).focus();
-
-      items.push({
-         first_name: this.state.first_name,
-         last_name:this.state.last_name,
-         mobile_number:this.state.mobile_number
-      });
+  handleUpdate (e,i){
+    e.preventDefault();
     
     this.setState({
-      items : items
+      showButton:true
     })
-   
-   
+    ReactDOM.findDOMNode(this.refs.myInput).focus();
+  
+  }
+
+  handleClick = (i) => {
+    let updateItems = [...this.state.items];
+    this.setState({
+      first_name: '',
+      last_name: '',
+      mobile_number: ''
+    },() =>{
+      console.log("handleClick : "+updateItems);
+      
+    })
+    
   }
 
 
@@ -118,16 +124,18 @@ import ReactDOM from 'react-dom';
                     <label>Mobile Number: </label>
                     <input type="tel" 
                     className="form-control"
-                    pattern="^\d{10}$"
-                    required="required"
+                    // pattern="^\d{10}$"
+                    // required="required"
                     value={this.state.mobile_number}
                     onChange={this.onChangeMobileNumber}/>
                 </div>
 
                 <div className="form-group">
                     <input type="submit" value="Submit" className="btn btn-primary"/>
+                   
                 </div>
             </form>
+            {this.state.showButton ? <button onClick={this.handleClick} className="btn btn-warning">Update</button> : null}
             </div>
 
             <div>

@@ -1,12 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Greet from './components/Greet'
-import WelcomeCC from './components/WelcomeCC'
-import Click from './components/ClickState'
-import Form from './components/form'
-import Table from './components/Table'
+import Person from './components/Person'
 
 
 function App() {
@@ -14,9 +10,7 @@ function App() {
     <div className="App">
      <Greet></Greet>
      <hr color="Red"></hr>
-     <Form/>
-     {/* <WelcomeCC/>
-    <Click/> */}
+    <Person/>
     </div>
   );
 }

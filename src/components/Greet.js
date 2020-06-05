@@ -1,9 +1,8 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { Carousel } from 'react-bootstrap';
 // import logo from '../images/cover.png';
-
 
 //function Greet(){
 //    return <h1>Hello Chandan - This is Functional component</h1>
