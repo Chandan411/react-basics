@@ -7,6 +7,9 @@ export class AddNewRecord extends Component {
     constructor(props){
         super(props);
 
+        this.handleSubmit = this.handleSubmit.bind(this);
+       
+
         this.state = {
           first_name: '',
           last_name: '',
@@ -15,24 +18,44 @@ export class AddNewRecord extends Component {
       }
     }
 
+    
+    onChange = e => {
+      this.setState({
+          [e.target.name]: e.target.value
+      });
+  };
+
+  
+
     handleSubmit(event){
      event.preventDefault();
-  
-      let firstName_value = event.target.firstName.value;
-      let lastName_value = event.target.lastName.value;
-      let mobileNumber_value = event.target.mobileNumber.value;
 
-      let records = [firstName_value,lastName_value,mobileNumber_value];
-      console.log(records);
+     let items = [...this.state.items];
 
-      this.props.saveModalDetails(records)
-       alert(records);
+     items.push({
+       first_name : event.target.firstName.value,
+       last_name : event.target.lastName.value,
+       mobile_number : event.target.mobileNumber.value
+     })
+     
+     console.log(items);
+     this.props.onHide();
+     
+      // let firstName_value = event.target.firstName.value;
+      // let lastName_value = event.target.lastName.value;
+      // let mobileNumber_value = event.target.mobileNumber.value;
+
+      // let records = [firstName_value,lastName_value,mobileNumber_value];
+      // console.log(records);
+
+      // this.props.saveModalDetails(records)
+      // alert(items);
 
     }
-    
+
 
     render() {
-
+    
         return (
             <Modal
       {...this.props}
@@ -49,12 +72,14 @@ export class AddNewRecord extends Component {
        <div className="container">
           <Row>
             <Col sm={6}>
-              <Form onSubmit = {this.handleSubmit}>
+              <Form onSubmit = {this.handleSubmit} >
                 <Form.Group controlId="firstName">
                   <Form.Label>First Name</Form.Label>
                   <Form.Control
                   type="text"
                   name = "firstName" required
+                  value = {this.state.f_name}
+                  onChange={this.onChange}
                   placeholder = "First Name"/>
                   </Form.Group>
 
@@ -63,6 +88,8 @@ export class AddNewRecord extends Component {
                   <Form.Control
                   type="text"
                   name = "lastName" required
+                  value = {this.state.l_name}
+                  onChange={this.onChange}
                   placeholder = "Last Name"/>
                 </Form.Group>
 
@@ -71,6 +98,8 @@ export class AddNewRecord extends Component {
                   <Form.Control
                   type="tel"
                   name = "mobileNumber" required
+                  value = {this.state.m_num}
+                  onChange={this.onChange}
                   placeholder = "Mobile Number"/>
                 </Form.Group>
                 
